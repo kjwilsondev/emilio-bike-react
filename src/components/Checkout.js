@@ -4,6 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 const fetchCheckoutSession = async ({ quantity }) => {
   return fetch("https://emilio-bike.herokuapp.com/create-checkout-session", {
     method: "POST",
+    mode: "no-cors",
     headers: {
       "Content-Type": "application/json",
     },
@@ -107,9 +108,11 @@ const Checkout = () => {
   const handleClick = async (event) => {
     // Call your backend to create the Checkout session.
     dispatch({ type: "setLoading", payload: { loading: true } });
+    console.log("about to start fetch");
     const { sessionId } = await fetchCheckoutSession({
       quantity: state.quantity,
     });
+    console.log("this should have worked but idk");
     // When the customer clicks on the button, redirect them to Checkout.
     const { error } = await state.stripe.redirectToCheckout({
       sessionId,
