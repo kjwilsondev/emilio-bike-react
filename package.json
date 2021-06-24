@@ -12,7 +12,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1"
   },
-  "homepage": "http://kjwilsondev.github.io/emilio-bike-react",
+  "homepage": "https://morning-stream-45010.herokuapp.com/",
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "npm run build",
