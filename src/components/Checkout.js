@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 
 const fetchCheckoutSession = async ({ quantity }) => {
-  return fetch("/create-checkout-session", {
+  return fetch("https://emilio-bike.herokuapp.com/create-checkout-session", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -85,12 +85,12 @@ const Checkout = () => {
     async function fetchConfig() {
       console.log("HERE 0");
       // Fetch config from our backend.
-      const { publicKey, unitAmount, currency } = await fetch("/config").then(
-        (res) => {
-          console.log(res);
-          return res.json();
-        }
-      );
+      const { publicKey, unitAmount, currency } = await fetch(
+        "https://emilio-bike.herokuapp.com/config"
+      ).then((res) => {
+        console.log(res);
+        return res.json();
+      });
       // Make sure to call `loadStripe` outside of a component’s render to avoid
       // recreating the `Stripe` object on every render.
       console.log("HERE 1");
